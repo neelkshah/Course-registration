@@ -1,15 +1,17 @@
-public class TimetableObject {
+public class TimeTableObject {
     public int courseCode;
     public int sectionID;
     public int bidValue;
+    public boolean isCDC;
 
-    public TimetableObject(int courseCode, int sectionID, int bidValue){
-         this.courseCode = courseCode;
+    public TimeTableObject(int course, int sectionID, int bidValue, boolean cdc){
+         this.courseCode = course;
          this.sectionID = sectionID;
          this.bidValue = bidValue;
+         this.isCDC = cdc;
     }
 
     public String toString(){
-        return courseCode + " " + sectionID + " " + bidValue;
+        return courseCode + " " + sectionID + " " + bidValue + " " + isCDC;
     }
 }
