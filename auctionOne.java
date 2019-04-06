@@ -42,12 +42,6 @@ public class auctionOne extends simpleAuction{
         }
     }
 
-    void printhigh(){
-        for(TimeTableObject t: curr){
-            System.out.println(t + "\n");
-        }
-    }
-
     void printResult(){
         for(int i = 0; i < result.size(); i++){
             System.out.println("\n....................Student " + i + "....................");
