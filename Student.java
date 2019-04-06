@@ -4,7 +4,7 @@ public class Student {
     public int id;
     public int branch;
     public int balance;
-    private ArrayList<TimeTableObject> timetable;
+    public ArrayList<TimeTableObject> timetable;
 
     public Student(int id, int branch, int points){
         this.id = id;
@@ -14,7 +14,7 @@ public class Student {
     }
 
     public void addToTimetable(int course, int sectionNumber, int valueAssigned, boolean cdc){
-        TimeTableObject ttObj = new TimeTableObject(course, sectionNumber, valueAssigned, cdc);
+        TimeTableObject ttObj = new TimeTableObject(id, course, sectionNumber, valueAssigned, cdc);
         timetable.add(ttObj);
     }
 

@@ -5,8 +5,8 @@ import java.util.Hashtable;
 
 public class ListManip {
 
-    Hashtable<Integer, Course> courses;
-    ArrayList<Student> students;
+    public Hashtable<Integer, Course> courses;
+    public ArrayList<Student> students;
 
     public ListManip(){
         this.courses = new Hashtable<>();
@@ -39,7 +39,7 @@ public class ListManip {
                         c.addSection(Integer.parseInt(str[i]));
                     }
                     courses.put(courseCode, c);
-                    System.out.println("Added course " + courseCode);
+                    //System.out.println("Added course " + courseCode + " " + c.cstrength);
                 }
                 catch(NumberFormatException npe){
                     System.out.println("Error 2");
@@ -71,7 +71,8 @@ public class ListManip {
                         courseCode = Integer.parseInt(str[3*(i+1)]);
                         section = Integer.parseInt(str[3*(i+1) + 1]);
                         bid = Integer.parseInt(str[3*(i+1) + 2]);
-                        s.addToTimetable(courseCode, section, bid, isCore(courseCode, branch));
+                        s.addToTimetable(courseCode, section - 1, bid, isCore(courseCode, branch));
+                        //System.out.println("Section number " + section);
                     }
                     students.add(s);
                 }
