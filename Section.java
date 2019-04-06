@@ -10,6 +10,6 @@ public class Section {
     }
 
     public String toString(){
-        return sectionID + " " + strength;
+        return (sectionID + 1) + " " + strength;
     }
 }

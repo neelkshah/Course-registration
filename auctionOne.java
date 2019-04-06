@@ -60,18 +60,5 @@ public class auctionOne extends simpleAuction{
                 System.out.println("No allotment");
             }
         }
-
-
-        /*for(LinkedList<TimeTableObject> toq: result){
-            if(!(toq.peek() == null)){
-                System.out.println("\n....................Student " + toq.peek().id + "....................");
-            }
-            else{
-                System.out.println();
-            }
-            for(TimeTableObject t: toq){
-                System.out.println(t.toString());
-            }
-        }*/
     }
 }

@@ -23,4 +23,8 @@ public class Student {
             System.out.println(timetable.get(i));
         }
     }
+
+    public String toString(){
+        return "ID number: " + id + "\nBranch: " + branch + "\nBalance: " + balance;
+    }
 }

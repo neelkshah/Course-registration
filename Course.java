@@ -31,6 +31,6 @@ public class Course {
     }
 
     public String toString(){
-        return sectionList.toString();
+        return "Course Code: " + courseCode + "\nBranch: " + coreBranch + "\nSections:\n" + sectionList.toString();
     }
 }

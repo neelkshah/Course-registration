@@ -15,7 +15,7 @@ public class TimeTableObject implements Comparable<TimeTableObject> {
     }
 
     public String toString(){
-        return id + " " + courseCode + " " + sectionID + " " + bidValue + " " + isCDC;
+        return id + " " + courseCode + " " + sectionID + " " + bidValue + " " + (isCDC ? "CDC" : "El");
     }
 
     @Override

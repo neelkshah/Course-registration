@@ -2,6 +2,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Hashtable;
+import java.util.Set;
 
 public class ListManip {
 
@@ -72,7 +73,6 @@ public class ListManip {
                         section = Integer.parseInt(str[3*(i+1) + 1]);
                         bid = Integer.parseInt(str[3*(i+1) + 2]);
                         s.addToTimetable(courseCode, section - 1, bid, isCore(courseCode, branch));
-                        //System.out.println("Section number " + section);
                     }
                     students.add(s);
                 }
@@ -80,15 +80,21 @@ public class ListManip {
                     System.out.println("Error 2");
                 }
             }
-        } catch (Exception e) {//Catch exception if any
+        } catch (Exception e){
             System.err.println("Error: " + e.getMessage());
         }
     }
 
-    public void printList(){
+    public void printSList(){
         for(int i = 0; i < students.size(); i++){
-            System.out.println("Student " + (students.get(i).id));
-            students.get(i).printTimeTable();
+            System.out.println(students.get(i).toString() + "\n");
+        }
+    }
+
+    public void printCList(){
+        Set<Integer> keys = courses.keySet();
+        for(Integer key: keys){
+            System.out.println(courses.get(key).toString() + "\n");
         }
     }
 }
