@@ -1,11 +1,9 @@
-import java.util.ArrayList;
-import java.util.Hashtable;
-import java.util.PriorityQueue;
-import java.util.Set;
+import java.util.*;
 
 public abstract class simpleAuction {
 
     public Hashtable<Integer, ArrayList<ArrayList<Integer>>> vac;
+    public LinkedList<LinkedList<TimeTableObject>> result;
 
     public void init(int nums, Hashtable<Integer, Course> courses){
         this.vac = new Hashtable<Integer, ArrayList<ArrayList<Integer>>>();
@@ -36,4 +34,20 @@ public abstract class simpleAuction {
             }
         }
     }
+
+    void printResult(){
+        for(int i = 0; i < result.size(); i++){
+            System.out.println("\n....................Student " + (i + 1) + "....................");
+            if(!(result.get(i).size() == 0)){
+                for(TimeTableObject t: result.get(i)){
+                    System.out.println(t.toString());
+                }
+            }
+            else{
+                System.out.println("No allotment");
+            }
+        }
+    }
+
+    public abstract void printStats();
 }
