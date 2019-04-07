@@ -5,7 +5,7 @@ public abstract class simpleAuction {
     public Hashtable<Integer, ArrayList<ArrayList<Integer>>> vac;
     public LinkedList<LinkedList<TimeTableObject>> result;
 
-    public void init(int nums, Hashtable<Integer, Course> courses){
+    public void init(Hashtable<Integer, Course> courses){
         this.vac = new Hashtable<Integer, ArrayList<ArrayList<Integer>>>();
         Set<Integer> keys = courses.keySet();
         for(Integer key: keys){

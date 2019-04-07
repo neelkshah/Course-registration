@@ -7,8 +7,8 @@ public class auctionOne extends simpleAuction{
     private float[] value;
 
     public void auction(int nums, Hashtable<Integer, Course> courses, PriorityQueue<TimeTableObject>[] bidQueues){
-        ArrayList<TimeTableObject> curr = new ArrayList<TimeTableObject>();
         long start = System.nanoTime();
+        ArrayList<TimeTableObject> curr = new ArrayList<TimeTableObject>();
         TimeTableObject current;
         sat = new int[nums][4];
         result = new LinkedList<LinkedList<TimeTableObject>>();
