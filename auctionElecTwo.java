@@ -5,7 +5,7 @@ public class auctionElecTwo extends simpleAuction {
     private long aucTimer;
     private float[] value;
 
-    public void auction(int nums, Hashtable<Integer, Course> courses, PriorityQueue<TimeTableObject>[] bidQueues){
+    public void auction(int nums, Hashtable<Integer, Course> courses, ArrayList<Student> students, PriorityQueue<TimeTableObject>[] bidQueues){
         long start = System.nanoTime();
         PriorityQueue<TimeTableObject> elQueue = new PriorityQueue<TimeTableObject>();
         TimeTableObject current;
@@ -50,12 +50,13 @@ public class auctionElecTwo extends simpleAuction {
             current = elQueue.poll();
             ArrayList<ArrayList<Integer>> val = vac.get(current.courseCode);
             int seat = val.get(current.sectionID).get(1);
-            if(seat > 0){
+            if(seat > 0 && students.get(current.id - 1).balance >= current.bidValue){
                 result.get(current.id - 1).addLast(current);
                 val.get(current.sectionID).set(1, seat - 1);
                 vac.replace(current.courseCode, val);
                 sat[current.id - 1][0]++;
                 sat[current.id - 1][2] += current.bidValue;
+                students.get(current.id - 1).balance -= current.bidValue;
             }
             else{
                 sat[current.id - 1][1]++;

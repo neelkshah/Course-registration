@@ -6,7 +6,7 @@ public class auctionElecOne extends simpleAuction{
     private float[] value;
     private ArrayList<PriorityQueue<TimeTableObject>> elQueues;
 
-    public void auction(int nums, Hashtable<Integer, Course> courses, PriorityQueue<TimeTableObject>[] bidQueues){
+    public void auction(int nums, Hashtable<Integer, Course> courses, ArrayList<Student> students, PriorityQueue<TimeTableObject>[] bidQueues){
         elQueues = new ArrayList<PriorityQueue<TimeTableObject>>();
         for(int ind = 0; ind < nums; ind++){
             elQueues.add(new PriorityQueue<TimeTableObject>());
@@ -39,12 +39,13 @@ public class auctionElecOne extends simpleAuction{
                 current = curr.get(k);
                 ArrayList<ArrayList<Integer>> val = vac.get(current.courseCode);
                 int seat = val.get(current.sectionID).get(1);
-                if(seat > 0){
+                if(seat > 0 && students.get(current.id - 1).balance >= current.bidValue){
                     result.get(current.id - 1).addLast(current);
                     val.get(current.sectionID).set(1, seat - 1);
                     vac.replace(current.courseCode, val);
                     sat[current.id - 1][0]++;
                     sat[current.id - 1][2] += current.bidValue;
+                    students.get(current.id - 1).balance -= current.bidValue;
                 }
                 else{
                     sat[current.id - 1][1]++;

@@ -2,15 +2,19 @@ import java.util.Scanner;
 
 import static java.lang.System.exit;
 
-public class driverElecTwo {
+public class altDriverOne {
 
     public static void main(String args[]){
+        caseGenerator caseMaker = new caseGenerator();
+        int bitVector[] = caseMaker.generateAllBinaryStrings(32);
         Scanner scanner = new Scanner(System.in);
-        ListManip p = new ListManip();
+        altListManip p = new altListManip();
+        QueueMaker q;
+        altAuctionOne auc;
         p.readCourseFile("C:\\Users\\NEEL KAUSHIK SHAH\\Desktop\\Academic Software\\trial\\src\\coursedata.txt");
-        p.readData("C:\\Users\\NEEL KAUSHIK SHAH\\Desktop\\Academic Software\\trial\\src\\studentdata.txt");
-        QueueMaker q = new QueueMaker(p.students);
-        auctionElecTwo auc = new auctionElecTwo();
+        p.readData("C:\\Users\\NEEL KAUSHIK SHAH\\Desktop\\Academic Software\\trial\\src\\studentdata.txt", bitVector);
+        q = new QueueMaker(p.students);
+        auc = new altAuctionOne();
         auc.init(p.courses);
         boolean aucDone = false;
         while(true){

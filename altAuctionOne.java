@@ -1,44 +1,47 @@
 import java.util.*;
 
-public class auctionTwo extends simpleAuction{
+public class altAuctionOne extends simpleAuction{
+
     private int[][] sat;
     private long aucTimer;
     private float[] value;
 
     public void auction(int nums, Hashtable<Integer, Course> courses, ArrayList<Student> students, PriorityQueue<TimeTableObject>[] bidQueues){
         long start = System.nanoTime();
+        ArrayList<TimeTableObject> curr = new ArrayList<TimeTableObject>();
         TimeTableObject current;
         sat = new int[nums][4];
         result = new LinkedList<LinkedList<TimeTableObject>>();
         for(int i = 0; i < nums; i++){
             result.addLast(new LinkedList<TimeTableObject>());
         }
-        PriorityQueue<TimeTableObject> megaQueue = new PriorityQueue<>(10000, new Comparator<TimeTableObject>() {
-            @Override
-            public int compare(TimeTableObject o1, TimeTableObject o2) {
-                return o2.bidValue - o1.bidValue;
+        while(true){
+            curr.clear();
+            for(int j = 0; j < bidQueues.length; j++){
+                if(!bidQueues[j].isEmpty()) {
+                    curr.add(bidQueues[j].remove());
+                }
             }
-        });
-        for(int i = 0; i < bidQueues.length; i++){
-            while(!bidQueues[i].isEmpty()){
-                megaQueue.add(bidQueues[i].poll());
+            if(curr.isEmpty()){
+                break;
             }
-        }
-        while(!(megaQueue.isEmpty())){
-            current = megaQueue.poll();
-            ArrayList<ArrayList<Integer>> val = vac.get(current.courseCode);
-            int seat = val.get(current.sectionID).get(1);
-            if(seat > 0 && students.get(current.id - 1).balance >= current.bidValue){
-                result.get(current.id - 1).addLast(current);
-                val.get(current.sectionID).set(1, seat - 1);
-                vac.replace(current.courseCode, val);
-                sat[current.id - 1][0]++;
-                sat[current.id - 1][2] += current.bidValue;
-                students.get(current.id - 1).balance -= current.bidValue;
-            }
-            else{
-                sat[current.id - 1][1]++;
-                sat[current.id - 1][3] += current.bidValue;
+            Collections.sort(curr);
+            for(int k = 0; k < curr.size(); k++){
+                current = curr.get(k);
+                ArrayList<ArrayList<Integer>> val = vac.get(current.courseCode);
+                int seat = val.get(current.sectionID).get(1);
+                if(seat > 0 && students.get(current.id - 1).balance >= current.bidValue){
+                    result.get(current.id - 1).addLast(current);
+                    val.get(current.sectionID).set(1, seat - 1);
+                    vac.replace(current.courseCode, val);
+                    sat[current.id - 1][0]++;
+                    sat[current.id - 1][2] += current.bidValue;
+                    students.get(current.id - 1).balance -= current.bidValue;
+                }
+                else{
+                    sat[current.id - 1][1]++;
+                    sat[current.id - 1][3] += current.bidValue;
+                }
             }
         }
         value = new float[nums];

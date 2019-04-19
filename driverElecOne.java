@@ -31,7 +31,7 @@ public class driverElecOne {
                     if(aucDone){
                         break;
                     }
-                    auc.auction(p.students.size(), p.courses, q.queue);
+                    auc.auction(p.students.size(), p.courses, p.students, q.queue);
                     aucDone = true;
                     break;
                 case 5:

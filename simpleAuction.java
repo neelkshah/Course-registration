@@ -21,7 +21,7 @@ public abstract class simpleAuction {
         }
     }
 
-    public abstract void auction(int nums, Hashtable<Integer, Course> courses, PriorityQueue<TimeTableObject>[] bidQueues);
+    public abstract void auction(int nums, Hashtable<Integer, Course> courses, ArrayList<Student> students, PriorityQueue<TimeTableObject>[] bidQueues);
 
     public void printSeats(){
         Set<Integer> keys = vac.keySet();
