@@ -1,12 +1,12 @@
 import java.util.*;
 
-public class altAuctionOne extends simpleAuction{
+public class altAuctionOne extends altSimpleAuction{
 
     private int[][] sat;
     private long aucTimer;
     private float[] value;
 
-    public void auction(int nums, Hashtable<Integer, Course> courses, ArrayList<Student> students, PriorityQueue<TimeTableObject>[] bidQueues){
+    public LinkedList<LinkedList<TimeTableObject>> auction(int nums, Hashtable<Integer, Course> courses, ArrayList<Student> students, PriorityQueue<TimeTableObject>[] bidQueues){
         long start = System.nanoTime();
         ArrayList<TimeTableObject> curr = new ArrayList<TimeTableObject>();
         TimeTableObject current;
@@ -53,17 +53,19 @@ public class altAuctionOne extends simpleAuction{
         }
         long end = System.nanoTime();
         aucTimer = end - start;
+        return result;
     }
 
-    public void printStats(){
+    public float measureStats(){
         float av = 0;
-        System.out.println("Time taken (in microseconds): " + (aucTimer/1000));
-        System.out.println("ID\t" + "#Allotted\t" + "Points used\t" + "#Not allotted\t" + "Points lost\t" + "Value");
+        //System.out.println("Time taken (in microseconds): " + (aucTimer/1000));
+        //System.out.println("ID\t" + "#Allotted\t" + "Points used\t" + "#Not allotted\t" + "Points lost\t" + "Value");
         for(int i = 0; i < sat.length; i++) {
             av += value[i];
-            System.out.println((i + 1) + "\t\t" + sat[i][0] + "\t\t\t" + sat[i][2] + "\t\t\t" + sat[i][1] + "\t\t\t\t" + sat[i][3] + "\t\t" + value[i]);
+            //System.out.println((i + 1) + "\t\t" + sat[i][0] + "\t\t\t" + sat[i][2] + "\t\t\t" + sat[i][1] + "\t\t\t\t" + sat[i][3] + "\t\t" + value[i]);
         }
         av = av/sat.length;
-        System.out.println("Average value = " + av);
+        //System.out.println("Average value = " + av);
+        return av;
     }
 }

@@ -53,7 +53,7 @@ public class altListManip {
 
     //.....................................................................................//
 
-    public void readData(String dataFile, int[]bitVector){
+    public void readData(String dataFile, int[] bitVector){
         try {
             BufferedReader br1 = new BufferedReader(new FileReader(dataFile));
             String strLine;

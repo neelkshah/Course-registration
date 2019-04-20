@@ -1,65 +1,61 @@
+import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.Scanner;
 
-import static java.lang.System.exit;
-
 public class altDriverOne {
+    public static int[] bitVector = new int[32];
+    public static LinkedList<LinkedList<TimeTableObject>> result;
+    public static LinkedList<LinkedList<TimeTableObject>> resultMax;
+    public static float value;
+    public static float valueMax = 0;
+    public static long nums = (long)Math.pow(2, 32);
 
-    public static void main(String args[]){
-        caseGenerator caseMaker = new caseGenerator();
-        int bitVector[] = caseMaker.generateAllBinaryStrings(32);
-        Scanner scanner = new Scanner(System.in);
-        altListManip p = new altListManip();
-        QueueMaker q;
-        altAuctionOne auc;
-        p.readCourseFile("C:\\Users\\NEEL KAUSHIK SHAH\\Desktop\\Academic Software\\trial\\src\\coursedata.txt");
-        p.readData("C:\\Users\\NEEL KAUSHIK SHAH\\Desktop\\Academic Software\\trial\\src\\studentdata.txt", bitVector);
-        q = new QueueMaker(p.students);
-        auc = new altAuctionOne();
-        auc.init(p.courses);
-        boolean aucDone = false;
-        while(true){
-            System.out.print("Press 0 to exit\nPress 1 to read list of courses\nPress 2 to read list of students\nPress 3 to read section-wise seat list\nPress 4 to run auction\nPress 5 to read allotments\nPress 6 to read statistics\n");
-            switch(scanner.nextInt()){
-                case 0:
-                    exit(0);
-                case 1:
-                    p.printCList();
-                    break;
-                case 2:
-                    p.printSList();
-                    break;
-                case 3:
-                    auc.printSeats();
-                    break;
-                case 4:
-                    if(aucDone){
-                        break;
-                    }
-                    auc.auction(p.students.size(), p.courses, p.students, q.queue);
-                    aucDone = true;
-                    break;
-                case 5:
-                    if(aucDone) {
-                        auc.printResult();
-                        break;
-                    }
-                    else{
-                        System.out.println("Please complete the auction first (Press 4)");
-                        break;
-                    }
-                case 6:
-                    if(aucDone) {
-                        auc.printStats();
-                        break;
-                    }
-                    else{
-                        System.out.println("Please complete the auction first (Press 4)");
-                        break;
-                    }
-                default:
-                    System.out.println("Please enter a valid option");
-                    break;
+    public static void printResult(){
+        for(int i = 0; i < result.size(); i++){
+            System.out.println("\n....................Student " + (i + 1) + "....................");
+            if(!(result.get(i).size() == 0)){
+                for(TimeTableObject t: result.get(i)){
+                    System.out.println(t.toString());
+                }
+            }
+            else{
+                System.out.println("No allotment");
             }
         }
+    }
+
+    public static void main(String args[]){
+        for(int x = 0; x < 32; x++){
+            bitVector[x] = 0;
+        }
+        altListManip p = new altListManip();
+        QueueMaker q;
+        altAuctionOne auc = new altAuctionOne();
+        p.readCourseFile("C:\\Users\\NEEL KAUSHIK SHAH\\Desktop\\Academic Software\\trial\\src\\coursedata.txt");
+        int i;
+        System.out.println(nums);
+        for(int count = 0; count < nums; count++) {
+            System.out.println("..." + count);
+            i = 0;
+            while(bitVector[i] == 2) {
+                bitVector[i] = 0;
+                i++;
+            }
+            p.students.clear();
+            auc.init(p.courses);
+            p.readData("C:\\Users\\NEEL KAUSHIK SHAH\\Desktop\\Academic Software\\trial\\src\\studentdata.txt", bitVector);
+            q = new QueueMaker(p.students);
+            //p.printSList();
+            result = auc.auction(p.students.size(), p.courses, p.students, q.queue);
+            value = auc.measureStats();
+            //System.out.println(value);
+            if(value > valueMax){
+                valueMax = value;
+                resultMax = result;
+            }
+            bitVector[i]++;
+        }
+        printResult();
+        System.out.println("Average global welfare = " + valueMax);
     }
 }
