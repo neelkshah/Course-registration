@@ -1,3 +1,5 @@
+package modelThree;
+
 import java.util.ArrayList;
 
 public class Student {

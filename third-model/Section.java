@@ -1,3 +1,5 @@
+package modelThree;
+
 public class Section {
     public int courseCode;
     public int sectionID;

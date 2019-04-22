@@ -1,3 +1,5 @@
+package modelThree;
+
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -8,8 +10,8 @@ public class driverElecOne {
     public static void main(String args[]) throws IOException {
         Scanner scanner = new Scanner(System.in);
         ListManip p = new ListManip();
-        p.readCourseFile("C:\\Users\\NEEL KAUSHIK SHAH\\Desktop\\Academic Software\\trial\\src\\coursedata.txt");
-        p.readData("C:\\Users\\NEEL KAUSHIK SHAH\\Desktop\\Academic Software\\trial\\src\\simplestudentdata.txt");
+        p.readCourseFile("C:\\Users\\ABC\\IdeaProjects\\Course-Registration\\src\\modelThree\\coursedata.txt");
+        p.readData("C:\\Users\\ABC\\IdeaProjects\\Course-Registration\\src\\modelThree\\simplestudentdata.txt");
         QueueMaker q = new QueueMaker(p.students);
         auctionElecOne auc = new auctionElecOne();
         auc.init(p.courses);
