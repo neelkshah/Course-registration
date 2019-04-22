@@ -1,3 +1,5 @@
+package modelFour;
+
 import java.util.ArrayList;
 
 public class Course {
