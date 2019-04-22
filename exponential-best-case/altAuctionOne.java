@@ -1,3 +1,5 @@
+package bestCase;
+
 import java.util.*;
 
 public class altAuctionOne extends altSimpleAuction{

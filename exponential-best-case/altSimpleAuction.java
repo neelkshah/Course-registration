@@ -1,3 +1,5 @@
+package bestCase;
+
 import java.util.*;
 
 public abstract class altSimpleAuction {

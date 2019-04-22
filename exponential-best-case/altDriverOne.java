@@ -1,3 +1,5 @@
+package bestCase;
+
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Scanner;
@@ -31,7 +33,7 @@ public class altDriverOne {
         altListManip p = new altListManip();
         QueueMaker q;
         altAuctionOne auc = new altAuctionOne();
-        p.readCourseFile("C:\\Users\\NEEL KAUSHIK SHAH\\Desktop\\Academic Software\\trial\\src\\coursedata.txt");
+        p.readCourseFile("C:\\Users\\ABC\\IdeaProjects\\Course-Registration\\src\\bestCase\\coursedata.txt");
         int i;
         System.out.println(nums);
         for(int count = 0; count < nums; count++) {
@@ -43,7 +45,7 @@ public class altDriverOne {
             }
             p.students.clear();
             auc.init(p.courses);
-            p.readData("C:\\Users\\NEEL KAUSHIK SHAH\\Desktop\\Academic Software\\trial\\src\\studentdata.txt", bitVector);
+            p.readData("C:\\Users\\ABC\\IdeaProjects\\Course-Registration\\src\\bestCase\\studentdata.txt", bitVector);
             q = new QueueMaker(p.students);
             //p.printSList();
             result = auc.auction(p.students.size(), p.courses, p.students, q.queue);

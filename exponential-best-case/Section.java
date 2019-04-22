@@ -1,3 +1,5 @@
+package bestCase;
+
 public class Section {
     public int courseCode;
     public int sectionID;
