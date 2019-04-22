@@ -1,3 +1,5 @@
+package existingModel;
+
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -28,7 +30,6 @@ public class prNumber {
     }
 
     public void auction(ArrayList<Student> students){
-        //System.out.println("---------------------------------" + students.size());
 
         long start = System.nanoTime();
         Student current;
@@ -105,7 +106,7 @@ public class prNumber {
         }
         BufferedWriter output = null;
         try {
-            File file = new File("C:\\Users\\NEEL KAUSHIK SHAH\\Desktop\\Academic Software\\trial\\src\\allotment.txt");
+            File file = new File("C:\\Users\\ABC\\IdeaProjects\\Course-Registration\\src\\existingModel\\allotment.txt");
             output = new BufferedWriter(new FileWriter(file));
             output.write(text);
         } catch ( IOException e ) {
@@ -128,7 +129,7 @@ public class prNumber {
         text += "\nGlobal welfare = " + av/sat.length + "\n";
         BufferedWriter output = null;
         try {
-            File file = new File("C:\\Users\\NEEL KAUSHIK SHAH\\Desktop\\Academic Software\\trial\\src\\result.txt");
+            File file = new File("C:\\Users\\ABC\\IdeaProjects\\Course-Registration\\src\\existingModel\\result.txt");
             output = new BufferedWriter(new FileWriter(file));
             output.write(text);
         } catch ( IOException e ) {

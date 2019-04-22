@@ -1,3 +1,5 @@
+package existingModel;
+
 public class Section {
     public int courseCode;
     public int sectionID;

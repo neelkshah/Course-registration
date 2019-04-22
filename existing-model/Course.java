@@ -1,3 +1,5 @@
+package existingModel;
+
 import java.util.ArrayList;
 
 public class Course {

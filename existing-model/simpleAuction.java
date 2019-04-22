@@ -1,3 +1,5 @@
+package existingModel;
+
 import java.util.*;
 
 public abstract class simpleAuction {
