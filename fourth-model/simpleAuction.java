@@ -1,3 +1,7 @@
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.*;
 
 public abstract class simpleAuction {
@@ -35,19 +39,32 @@ public abstract class simpleAuction {
         }
     }
 
-    void printResult(){
+    void printResult() throws IOException {
+        String text = "Course Allotments\n";
         for(int i = 0; i < result.size(); i++){
-            System.out.println("\n....................Student " + (i + 1) + "....................");
+            text += ("\n....................Student " + (i + 1) + "....................\n");
             if(!(result.get(i).size() == 0)){
                 for(TimeTableObject t: result.get(i)){
-                    System.out.println(t.toString());
+                    text += t.toString() + "\n";
                 }
             }
             else{
-                System.out.println("No allotment");
+                text+="No allotment\n";
+            }
+        }
+        BufferedWriter output = null;
+        try {
+            File file = new File("C:\\Users\\NEEL KAUSHIK SHAH\\Desktop\\Academic Software\\trial\\src\\allotment.txt");
+            output = new BufferedWriter(new FileWriter(file));
+            output.write(text);
+        } catch ( IOException e ) {
+            e.printStackTrace();
+        } finally {
+            if ( output != null ) {
+                output.close();
             }
         }
     }
 
-    public abstract void printStats();
+    public abstract void printStats() throws IOException;
 }
