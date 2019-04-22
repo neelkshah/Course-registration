@@ -1,3 +1,5 @@
+package modelTwo;
+
 public class Section {
     public int courseCode;
     public int sectionID;

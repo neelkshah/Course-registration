@@ -1,3 +1,5 @@
+package modelTwo;
+
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -67,7 +69,7 @@ public class auctionTwo extends simpleAuction{
         text += "\nGlobal welfare = " + av/sat.length + "\n";
         BufferedWriter output = null;
         try {
-            File file = new File("C:\\Users\\NEEL KAUSHIK SHAH\\Desktop\\Academic Software\\trial\\src\\result.txt");
+            File file = new File("C:\\Users\\ABC\\IdeaProjects\\Course-Registration\\src\\modelTwo\\result.txt");
             output = new BufferedWriter(new FileWriter(file));
             output.write(text);
         } catch ( IOException e ) {

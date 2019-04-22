@@ -1,3 +1,5 @@
+package modelTwo;
+
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -8,8 +10,8 @@ public class driverTwo {
     public static void main(String args[]) throws IOException {
         Scanner scanner = new Scanner(System.in);
         ListManip p = new ListManip();
-        p.readCourseFile("C:\\Users\\NEEL KAUSHIK SHAH\\Desktop\\Academic Software\\trial\\src\\coursedata.txt");
-        p.readData("C:\\Users\\NEEL KAUSHIK SHAH\\Desktop\\Academic Software\\trial\\src\\simplestudentdata.txt");
+        p.readCourseFile("C:\\Users\\ABC\\IdeaProjects\\Course-Registration\\src\\modelTwo\\coursedata.txt");
+        p.readData("C:\\Users\\ABC\\IdeaProjects\\Course-Registration\\src\\modelTwo\\simplestudentdata.txt");
         QueueMaker q = new QueueMaker(p.students);
         auctionTwo auc = new auctionTwo();
         auc.init(p.courses);
