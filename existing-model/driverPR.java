@@ -1,19 +1,20 @@
+import java.io.IOException;
 import java.util.Scanner;
 
 import static java.lang.System.exit;
 
 public class driverPR {
 
-    public static void main(String args[]){
+    public static void main(String args[]) throws IOException {
         Scanner scanner = new Scanner(System.in);
         ListManip p = new ListManip();
         p.readCourseFile("C:\\Users\\NEEL KAUSHIK SHAH\\Desktop\\Academic Software\\trial\\src\\coursedata.txt");
-        p.readData("C:\\Users\\NEEL KAUSHIK SHAH\\Desktop\\Academic Software\\trial\\src\\studentdata.txt");
+        p.readData("C:\\Users\\NEEL KAUSHIK SHAH\\Desktop\\Academic Software\\trial\\src\\simplestudentdata.txt");
         prNumber auc = new prNumber();
         auc.init(p.courses);
-        boolean aucDone = false;
+        System.out.print("Press 0 to exit\nPress 1 to read list of courses\nPress 2 to read list of students\nPress 3 to read section-wise seat list\nPress 4 to run auction\n");
         while(true){
-            System.out.print("Press 0 to exit\nPress 1 to read list of courses\nPress 2 to read list of students\nPress 3 to read section-wise seat list\nPress 4 to run auction\nPress 5 to read allotments\nPress 6 to read statistics\n");
+            System.out.println("Enter option:");
             switch(scanner.nextInt()){
                 case 0:
                     exit(0);
@@ -27,30 +28,10 @@ public class driverPR {
                     auc.printSeats();
                     break;
                 case 4:
-                    if(aucDone){
-                        break;
-                    }
                     auc.auction(p.students);
-                    aucDone = true;
+                    auc.printResult();
+                    auc.printStats();
                     break;
-                case 5:
-                    if(aucDone) {
-                        auc.printResult();
-                        break;
-                    }
-                    else{
-                        System.out.println("Please complete the auction first (Press 4)");
-                        break;
-                    }
-                case 6:
-                    if(aucDone) {
-                        auc.printStats();
-                        break;
-                    }
-                    else{
-                        System.out.println("Please complete the auction first (Press 4)");
-                        break;
-                    }
                 default:
                     System.out.println("Please enter a valid option");
                     break;

@@ -1,3 +1,7 @@
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.*;
 
 public class prNumber {
@@ -86,29 +90,53 @@ public class prNumber {
         }
     }
 
-    void printResult(){
+    void printResult() throws IOException {
+        String text = "Course Allotments\n";
         for(int i = 0; i < result.size(); i++){
-            System.out.println("\n....................Student " + (i + 1) + "....................");
+            text += ("\n....................Student " + (i + 1) + "....................\n");
             if(!(result.get(i).size() == 0)){
                 for(TimeTableObject t: result.get(i)){
-                    System.out.println(t.toString());
+                    text += t.toString() + "\n";
                 }
             }
             else{
-                System.out.println("No allotment");
+                text+="No allotment\n";
+            }
+        }
+        BufferedWriter output = null;
+        try {
+            File file = new File("C:\\Users\\NEEL KAUSHIK SHAH\\Desktop\\Academic Software\\trial\\src\\allotment.txt");
+            output = new BufferedWriter(new FileWriter(file));
+            output.write(text);
+        } catch ( IOException e ) {
+            e.printStackTrace();
+        } finally {
+            if ( output != null ) {
+                output.close();
             }
         }
     }
 
-    public void printStats(){
+    public void printStats() throws IOException {
         float av = 0;
-        System.out.println("Time taken (in microseconds): " + (aucTimer/1000));
-        System.out.println("ID\t" + "#Allotted\t" + "Points used\t" + "#Not allotted\t" + "Points lost\t" + "Value");
+        String text = "Auction Statistics\n\nTime taken: " + (aucTimer/1000) + " microseconds\n\n";
+        text += "ID\t" + "#Allotted\t" + "Points used\t" + "#Not allotted\t" + "Points lost\t" + "Value" + "\n";
         for(int i = 0; i < sat.length; i++) {
             av += value[i];
-            System.out.println((i + 1) + "\t\t" + sat[i][0] + "\t\t\t" + sat[i][2] + "\t\t\t" + sat[i][1] + "\t\t\t\t" + sat[i][3] + "\t\t" + value[i]);
+            text += ((i + 1) + "\t\t" + sat[i][0] + "\t\t\t" + sat[i][2] + "\t\t\t" + sat[i][1] + "\t\t\t\t" + sat[i][3] + "\t\t" + value[i] + "\n");
         }
-        av = av/sat.length;
-        System.out.println("Average value = " + av);
+        text += "\nGlobal welfare = " + av/sat.length + "\n";
+        BufferedWriter output = null;
+        try {
+            File file = new File("C:\\Users\\NEEL KAUSHIK SHAH\\Desktop\\Academic Software\\trial\\src\\result.txt");
+            output = new BufferedWriter(new FileWriter(file));
+            output.write(text);
+        } catch ( IOException e ) {
+            e.printStackTrace();
+        } finally {
+            if ( output != null ) {
+                output.close();
+            }
+        }
     }
 }
