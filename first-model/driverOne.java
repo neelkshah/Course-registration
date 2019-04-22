@@ -1,4 +1,4 @@
-import sun.awt.geom.AreaOp;
+package modelOne;
 
 import java.io.IOException;
 import java.util.Scanner;
@@ -10,8 +10,8 @@ public class driverOne {
 	public static void main(String args[]) throws IOException {
 	    Scanner scanner = new Scanner(System.in);
         ListManip p = new ListManip();
-        p.readCourseFile("C:\\Users\\NEEL KAUSHIK SHAH\\Desktop\\Academic Software\\trial\\src\\coursedata.txt");
-        p.readData("C:\\Users\\NEEL KAUSHIK SHAH\\Desktop\\Academic Software\\trial\\src\\simplestudentdata.txt");
+        p.readCourseFile("C:\\Users\\ABC\\IdeaProjects\\Course-Registration\\src\\modelOne\\coursedata.txt");
+        p.readData("C:\\Users\\ABC\\IdeaProjects\\Course-Registration\\src\\modelOne\\simplestudentdata.txt");
         QueueMaker q = new QueueMaker(p.students);
         auctionOne auc = new auctionOne();
         auc.init(p.courses);

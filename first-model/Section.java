@@ -1,3 +1,5 @@
+package modelOne;
+
 public class Section {
     public int courseCode;
     public int sectionID;

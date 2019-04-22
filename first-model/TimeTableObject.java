@@ -1,3 +1,5 @@
+package modelOne;
+
 public class TimeTableObject implements Comparable<TimeTableObject> {
     public int id;
     public int courseCode;
